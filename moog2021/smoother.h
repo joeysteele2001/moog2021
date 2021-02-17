@@ -1,10 +1,19 @@
+
+/// Smooth data with random noise using a simple averager.
+/// Template parameter LEN is the number of past points to average.
 template <int LEN=32>
 class Smoother {
     public:
         Smoother() {}
         
+        /// Feed a new data point to the Smoother.
         void addData(float data);
+
+        /// Get the current average.
         float average();
+
+        /// Get the current sum of data.
+        /// Prefer using this method instead of average() if possible to avoid a floating-point division.
         float sum();
 
     private:
