@@ -1,15 +1,38 @@
 #include "Arduino.h"
 
+/// Smooth circular data with random noise using an averager.
+/// Circular data is any data that can be converted into an "angle" which loops back on itself.
+/// Template parameter LEN is the number of past points to average.
 template <int LEN=32>
 class CircularSmoother {
     public:
         CircularSmoother() {}
 
+        /// Feed a new data point to the CircularSmoother.
+        /// Angle must be given in radians.
         void addData(float angle);
+
+        /// Get the current average raw angle.
+        /// Ranges from -pi to +pi.
+        /// This is still sensitive to sudden jumps on the edge of -pi and +pi.
         float averageAngle();
+
+        /// Get the average of the cosines of the angles.
+        /// Ranges from -1 to +1.
+        /// This method has no sudden jumps in its output, unlike averageAngle().
         float averageCosine();
+
+        /// Get the average of the sines of the angles.
+        /// Ranges from -1 to +1.
+        /// This method has no sudden jumps in its output, unlike averageAngle();
         float averageSine();
+
+        /// Get the current sum of the cosines of the angles.
+        /// Prefer using this method instead of the averageXX() methods if possible to avoid a floating-point division.
         float cosineSum();
+
+        /// Get the current sum of the sines of the angles.
+        /// Prefer using this method instead of the averageXX() methods if possible to avoid a floating-point division.
         float sineSum();
 
     private:
