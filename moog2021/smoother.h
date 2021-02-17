@@ -28,3 +28,13 @@ void Smoother<LEN>::addData(float data) {
     _smoothIndex++;
     _smoothIndex %= LEN;
 }
+
+template <int LEN>
+float Smoother<LEN>::average() {
+    return _sum / LEN;
+}
+
+template <int LEN>
+float Smoother<LEN>::sum() {
+    return _sum;
+}
