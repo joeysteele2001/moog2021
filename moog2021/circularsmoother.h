@@ -1,5 +1,3 @@
-#include "Arduino.h"
-
 /// Smooth circular data with random noise using an averager.
 /// Circular data is any data that can be converted into an "angle" which loops back on itself.
 /// Template parameter LEN is the number of past points to average.

@@ -1,5 +1,4 @@
-#include "circularsmoother.h"
-#include "smoother.h"
+#include "smoothers.h"
 
 CircularSmoother<16> smoother;
 Smoother<64> smoother2;

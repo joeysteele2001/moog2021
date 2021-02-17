@@ -1,4 +1,3 @@
-
 /// Smooth data with random noise using a simple averager.
 /// Template parameter LEN is the number of past points to average.
 template <int LEN=32>
