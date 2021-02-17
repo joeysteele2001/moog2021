@@ -1,3 +1,6 @@
+#ifndef CIRCULARSMOOTHER_H
+#define CIRCULARSMOOTHER_H
+
 /// Smooth circular data with random noise using an averager.
 /// Circular data is any data that can be converted into an "angle" which loops back on itself.
 /// Template parameter LEN is the number of past points to average.
@@ -91,3 +94,5 @@ template <int LEN>
 float CircularSmoother<LEN>::sineSum() {
     return _sineSum;
 }
+
+#endif // CIRCULARSMOOTHER_H
