@@ -3,10 +3,12 @@
                     random noise, then prints smoothed data to serial
 */
 
-#include "smoothers.h"
+#include <smoothers.h>
+#include <smoother.h>
+#include <circularsmoother.h>
 
 // Make a new smoother with default smooth length.
-CircularSmoother<> cs();
+CircularSmoother<> cs;
 
 // The current angle the simulated compass is facing, in radians.
 float currentAngle = 0.0;

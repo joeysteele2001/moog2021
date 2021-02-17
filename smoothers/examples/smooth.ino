@@ -3,13 +3,15 @@
             the data to serial
 */
 
-#include "smoothers.h"
+#include <smoothers.h>
+#include <smoother.h>
+#include <circularsmoother.h>
 
 // The pin to read analog data from. Change this to your desired pin.
 #define INPUT_PIN A0
 
 // Make a new smoother with default smooth length.
-Smoother<> s();
+Smoother<> s;
 
 void setup() {
     Serial.begin(9600);
@@ -19,8 +21,8 @@ void loop() {
     // Read in data, between 0 and 1023.
     int data = analogRead(INPUT_PIN);
 
-    // Scale data to between 0 and 1.
-    s.addData((float) data / 1024);
+    // Scale data to between 0 and 10.
+    s.addData((float) data / 1024 * 10);
 
     // Print the smoothed data to 4 decimal places.
     float smoothed = s.average();
