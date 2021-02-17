@@ -1,3 +1,5 @@
+#ifndef SMOOTHER_H
+#define SMOOTHER_H
 
 /// Smooth data with random noise using a simple averager.
 /// Template parameter LEN is the number of past points to average.
@@ -47,3 +49,5 @@ template <int LEN>
 float Smoother<LEN>::sum() {
     return _sum;
 }
+
+#endif // SMOOTHER_H
