@@ -1,0 +1,10 @@
+Smoother	KEYWORD1
+CircularSmoother	KEYWORD1
+addData	KEYWORD2
+average	KEYWORD2
+sum	KEYWORD2
+averageAngle	KEYWORD2
+averageCosine	KEYWORD2
+averageSine	KEYWORD2
+cosineSum	KEYWORD2
+sineSum	KEYWORD2
