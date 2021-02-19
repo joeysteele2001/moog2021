@@ -54,4 +54,26 @@ namespace ScaleDegree {
     constexpr uint8_t octave = 60;
 };
 
+namespace NoteName {
+    using namespace ScaleDegree;
+    constexpr uint8_t C = tonic;
+    constexpr uint8_t Csharp = min2;
+    constexpr uint8_t Dflat = min2;
+    constexpr uint8_t D = maj2;
+    constexpr uint8_t Dsharp = min3;
+    constexpr uint8_t Eflat = min3;
+    constexpr uint8_t E = maj3;
+    constexpr uint8_t F = p4;
+    constexpr uint8_t Fsharp = tritone;
+    constexpr uint8_t Gflat = tritone;
+    constexpr uint8_t G = p5;
+    constexpr uint8_t Gsharp = min6;
+    constexpr uint8_t Aflat = min6;
+    constexpr uint8_t A = maj6;
+    constexpr uint8_t Asharp = min7;
+    constexpr uint8_t Bflat = min7;
+    constexpr uint8_t B = maj7;
+    constexpr uint8_t Coct = octave;
+}
+
 #endif // ARPEGGIATOR_H
