@@ -26,7 +26,7 @@ void loop() {
     cs.addData(data);
 
     // Print the smoothed data to 4 decimal places.
-    float smoothed = s.averageAngle();
+    float smoothed = cs.averageAngle();
     
     /* 
         Try running the following line instead of the previous line. If you use 
@@ -34,7 +34,7 @@ void loop() {
         and +180 deg.
     */
 
-    // float smoothed = s.averageCosine();
+    // float smoothed = cs.averageCosine();
 
     Serial.println(smoothed, 4);
 
