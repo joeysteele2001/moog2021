@@ -4,6 +4,8 @@ setNotes	KEYWORD2
 start	KEYWORD2
 stop	KEYWORD2
 update	KEYWORD2
+advance KEYWORD2
+playNote    KEYWORD2
 tonic	LITERAL1
 min2	LITERAL1
 maj2	LITERAL1
