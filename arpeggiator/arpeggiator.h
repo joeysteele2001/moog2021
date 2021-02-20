@@ -21,6 +21,13 @@ class Arpeggiator {
         /// Stop the arpeggiator.
         void stop();
 
+        /// Set which index of the arpeggiator's notes to play.
+        void playNote(int index);
+
+        /// Manually advance to the next note.
+        /// Return the new note value.
+        uint8_t advance();
+
         /// Update the arpeggiator and change notes if applicable.
         /// Run this function as often as possible!
         /// Returns the note that was changed to, or -1 if nothing changed.
@@ -34,6 +41,13 @@ class Arpeggiator {
         uint8_t *_notes;
         int _notesLen;
         int _currentNote = 0;
+
+        /// Advance to the next note unconditionally.
+        /// Returns the next note value.
+        uint8_t _nextNote();
+
+        /// Increment the _currentNote index, wrapping back to zero when necessary.
+        inline void _incNote();
 };
 
 namespace ScaleDegree {
