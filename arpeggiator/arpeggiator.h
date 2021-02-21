@@ -48,6 +48,7 @@ class Arpeggiator {
     private:
         bool _active = false;
         bool _stopAtEnd = false;
+        bool _hasStarted = false;
         int _millisInterval;
         unsigned long _targetMillis;
         int _pin;
@@ -65,6 +66,9 @@ class Arpeggiator {
 
         /// Increment the _currentNote index, wrapping back to zero when necessary.
         int _incNote();
+
+        /// Return whether the arpeggiator's _currentNote index is at the end.
+        bool _isAtEnd();
 };
 
 namespace ScaleDegree {
