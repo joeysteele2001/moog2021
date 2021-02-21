@@ -4,8 +4,12 @@
 #include "Arduino.h"
 
 /// Read the top sliding pot with appropriate scaling.
+/// Returns 0 if not pressed.
 /// For sanity, returns a value between 0 and 1.
 float readSlideTop();
+
+/// Return whether the top sliding pot is being pressed.
+bool slideTopIsPressed();
 
 /// Read the bottom sliding pot with appropriate scaling.
 /// For sanity, returns a value between 0 and 1.
