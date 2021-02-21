@@ -28,6 +28,15 @@ void Arpeggiator::stop() {
     _active = false;
 }
 
+
+void Arpeggiator::setForward() {
+    _direction = 1;
+}
+
+void Arpeggiator::setReverse() {
+    _direction = -1;
+}
+
 void Arpeggiator::stopAtEnd(bool shouldStop) {
     _stopAtEnd = shouldStop;
 }
@@ -69,8 +78,13 @@ uint8_t Arpeggiator::_nextNote() {
     return nextNote;
 }
 
-inline int Arpeggiator::_incNote() {
-    _currentNote++;
+int Arpeggiator::_incNote() {
+    _currentNote += _direction;
     _currentNote %= _notesLen;
+
+    if _currentNote < 0 {
+        _currentNote += _notesLen;
+    }
+
     return currentNote;
 }
