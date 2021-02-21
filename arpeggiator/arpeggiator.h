@@ -21,6 +21,15 @@ class Arpeggiator {
         /// Stop the arpeggiator.
         void stop();
 
+        /// Set notes to play forward.
+        void setForward();
+
+        /// Set notes to play backward.
+        void setReverse();
+
+        /// Set whether the arpeggiator should stop when it reaches the end of the chord.
+        void stopAtEnd(bool shouldStop);
+
         /// Set which index of the arpeggiator's notes to play.
         void playNote(int index);
 
@@ -33,21 +42,33 @@ class Arpeggiator {
         /// Returns the note that was changed to, or -1 if nothing changed.
         int update();
 
+        /// Return whether the arpeggiator is currently active.
+        bool isActive();
+
     private:
         bool _active = false;
+        bool _stopAtEnd = false;
+        bool _hasStarted = false;
         int _millisInterval;
         unsigned long _targetMillis;
         int _pin;
         uint8_t *_notes;
         int _notesLen;
         int _currentNote = 0;
+        char _direction = 1;
+
+        static constexpr char forward = 1;
+        static constexpr char reverse = -1;
 
         /// Advance to the next note unconditionally.
         /// Returns the next note value.
         uint8_t _nextNote();
 
         /// Increment the _currentNote index, wrapping back to zero when necessary.
-        inline void _incNote();
+        int _incNote();
+
+        /// Return whether the arpeggiator's _currentNote index is at the end.
+        bool _isAtEnd();
 };
 
 namespace ScaleDegree {

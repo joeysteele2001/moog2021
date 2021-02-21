@@ -20,12 +20,30 @@ void Arpeggiator::setNotes(uint8_t notes[], int notesLen) {
 
 void Arpeggiator::start() {
     _active = true;
-    _currentNote = 0;
     _targetMillis = millis();
+    _hasStarted = false;
+
+    if (_direction == forward) {
+        _currentNote = _notesLen - 1;
+    } else {
+        _currentNote = 0;
+    }
 }
 
 void Arpeggiator::stop() {
     _active = false;
+}
+
+void Arpeggiator::setForward() {
+    _direction = forward;
+}
+
+void Arpeggiator::setReverse() {
+    _direction = reverse;
+}
+
+void Arpeggiator::stopAtEnd(bool shouldStop) {
+    _stopAtEnd = shouldStop;
 }
 
 void Arpeggiator::playNote(int index) {
@@ -51,16 +69,41 @@ int Arpeggiator::update() {
     return advance();
 }
 
+bool Arpeggiator::isActive() {
+    return _active;
+}
+
 uint8_t Arpeggiator::_nextNote() {
+    int nextInd = _incNote();
+
+    /// Disable arpeggiator if stopAtEnd mode is enabled.
+    if (_stopAtEnd && _isAtEnd() && _hasStarted) {
+        stop();
+    }
+
+    _hasStarted = true;
+
     uint8_t nextNote = _notes[_currentNote];
     analogWrite(_pin, nextNote);
-
-    _incNote();
-
+    
     return nextNote;
 }
 
-inline void Arpeggiator::_incNote() {
-    _currentNote++;
+int Arpeggiator::_incNote() {
+    _currentNote += _direction;
     _currentNote %= _notesLen;
+
+    if (_currentNote < 0) {
+        _currentNote += _notesLen;
+    }
+
+    return _currentNote;
+}
+
+bool Arpeggiator::_isAtEnd() {
+    if (_direction == forward) {
+        return (_currentNote == _notesLen - 1);
+    } else {
+        return (_currentNote == 0);
+    }
 }
