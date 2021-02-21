@@ -28,6 +28,10 @@ void Arpeggiator::stop() {
     _active = false;
 }
 
+void Arpeggiator::stopAtEnd(bool shouldStop) {
+    _stopAtEnd = shouldStop;
+}
+
 void Arpeggiator::playNote(int index) {
     if (index >= _notesLen) {
         // Invalid index; do nothing
@@ -55,12 +59,18 @@ uint8_t Arpeggiator::_nextNote() {
     uint8_t nextNote = _notes[_currentNote];
     analogWrite(_pin, nextNote);
 
-    _incNote();
+    int nextInd = _incNote();
+    
+    /// Disable arpeggiator if stopAtEnd mode is enabled.
+    if (_stopAtEnd && nextInd == 0) {
+        _active = false;
+    }
 
     return nextNote;
 }
 
-inline void Arpeggiator::_incNote() {
+inline int Arpeggiator::_incNote() {
     _currentNote++;
     _currentNote %= _notesLen;
+    return currentNote;
 }

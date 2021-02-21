@@ -21,6 +21,9 @@ class Arpeggiator {
         /// Stop the arpeggiator.
         void stop();
 
+        /// Set whether the arpeggiator should stop when it reaches the end of the chord.
+        void stopAtEnd(bool shouldStop);
+
         /// Set which index of the arpeggiator's notes to play.
         void playNote(int index);
 
@@ -35,6 +38,7 @@ class Arpeggiator {
 
     private:
         bool _active = false;
+        bool _stopAtEnd = false;
         int _millisInterval;
         unsigned long _targetMillis;
         int _pin;
@@ -47,7 +51,7 @@ class Arpeggiator {
         uint8_t _nextNote();
 
         /// Increment the _currentNote index, wrapping back to zero when necessary.
-        inline void _incNote();
+        inline int _incNote();
 };
 
 namespace ScaleDegree {
