@@ -42,6 +42,9 @@ class Arpeggiator {
         /// Returns the note that was changed to, or -1 if nothing changed.
         int update();
 
+        /// Return whether the arpeggiator is currently active.
+        bool isActive();
+
     private:
         bool _active = false;
         bool _stopAtEnd = false;

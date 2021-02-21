@@ -70,6 +70,10 @@ int Arpeggiator::update() {
     return advance();
 }
 
+bool Arpeggiator::isActive() {
+    return _active;
+}
+
 uint8_t Arpeggiator::_nextNote() {
     uint8_t nextNote = _notes[_currentNote];
     analogWrite(_pin, nextNote);
