@@ -22,9 +22,15 @@ bool slideBottomIsPressed();
 /// For sanity, returns a value between 0 and 1.
 float readFsrNeck();
 
+/// Return whether the neck force-sensitive resistor is being pressed.
+bool fsrNeckIsPressed();
+
 /// Read the body force-sensitive resistor with appropriate scaling.
 /// For sanity, returns a value between 0 and 1.
 float readFsrBody();
+
+/// Return whether the body force-sensitive resistor is being pressed.
+bool fsrBodyIsPressed();
 
 /// Read the body's switch, either on or off.
 bool readSwitch();
