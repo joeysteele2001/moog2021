@@ -53,6 +53,9 @@ class Arpeggiator {
         int _currentNote = 0;
         char _direction = 1;
 
+        constexpr char forward = 1;
+        constexpr char reverse = -1;
+
         /// Advance to the next note unconditionally.
         /// Returns the next note value.
         uint8_t _nextNote();
