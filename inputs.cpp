@@ -1,12 +1,12 @@
 #include "inputs.h"
 #include "pindefs.h"
 
-constexpr int SLIDE_TOP_HIGH_VALUE = 550;
-constexpr int SLIDE_TOP_LOW_VALUE = 315;
+constexpr int SLIDE_TOP_HIGH_VALUE = 525;
+constexpr int SLIDE_TOP_LOW_VALUE = 340;
 constexpr int SLIDE_TOP_PRESS_THRESHOLD = 100;
 
-constexpr int SLIDE_BOTTOM_HIGH_VALUE = 350;
-constexpr int SLIDE_BOTTOM_LOW_VALUE = 250;
+constexpr int SLIDE_BOTTOM_HIGH_VALUE = 335;
+constexpr int SLIDE_BOTTOM_LOW_VALUE = 265;
 constexpr int SLIDE_BOTTOM_PRESS_THRESHOLD = 100;
 
 constexpr int FSR_NECK_HIGH_VALUE = 1023;
