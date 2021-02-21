@@ -15,7 +15,7 @@ constexpr int FSR_NECK_PRESS_THRESHOLD = 1000;
 constexpr int FSR_BODY_HIGH_VALUE = 220;
 constexpr int FSR_BODY_PRESS_THRESHOLD = 50;
 
-constexpr int SWITCH_THRESHOLD = 1000;
+constexpr int SWITCH_THRESHOLD = 1020;
 
 constexpr int DIAL_LOW_VALUE = 0;
 constexpr int DIAL_HIGH_VALUE = 1023;
@@ -117,7 +117,7 @@ bool readSwitch() {
     return rawVal > SWITCH_THRESHOLD;
 }
 
-bool readDial() {
+float readDial() {
     int rawVal = analogRead(PinDefs::PIN_DIAL);
     float mapped = floatMapLin(rawVal, DIAL_LOW_VALUE, DIAL_HIGH_VALUE);
     return _constrain(mapped);

@@ -37,6 +37,6 @@ bool readSwitch();
 
 /// Read the body's dial with appropriate scaling.
 /// For sanity, returns a value between 0 and 1.
-bool readDial();
+float readDial();
 
 #endif // INPUTS_H
