@@ -20,7 +20,6 @@ void Arpeggiator::setNotes(uint8_t notes[], int notesLen) {
 
 void Arpeggiator::start() {
     _active = true;
-    _currentNote = 0;
     _targetMillis = millis();
 }
 
