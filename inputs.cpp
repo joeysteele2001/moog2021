@@ -17,6 +17,9 @@ constexpr int FSR_BODY_PRESS_THRESHOLD = 50;
 
 constexpr int SWITCH_THRESHOLD = 1000;
 
+constexpr int DIAL_LOW_VALUE = 0;
+constexpr int DIAL_HIGH_VALUE = 1023;
+
 // Map a float from between fromLow and fromHigh to between 0 and 1.
 static float floatMapLin(float value, float fromLow, float fromHigh) {
     return (value - fromLow) / (fromHigh - fromLow);
@@ -114,5 +117,8 @@ bool readSwitch() {
     return rawVal > SWITCH_THRESHOLD;
 }
 
-// TODO define readDial()
-bool readDial();
+bool readDial() {
+    int rawVal = analogRead(PinDefs::PIN_DIAL);
+    float mapped = floatMapLin(rawVal, DIAL_LOW_VALUE, DIAL_HIGH_VALUE);
+    return _constrain(mapped);
+}
