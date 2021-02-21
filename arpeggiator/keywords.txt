@@ -9,6 +9,7 @@ playNote    KEYWORD2
 stopAtEnd   KEYWORD2
 setForward  KEYWORD2
 setReverse  KEYWORD2
+isActive    KEYWORD2
 tonic	LITERAL1
 min2	LITERAL1
 maj2	LITERAL1
