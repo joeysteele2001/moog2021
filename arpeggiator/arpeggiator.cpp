@@ -85,5 +85,5 @@ int Arpeggiator::_incNote() {
         _currentNote += _notesLen;
     }
 
-    return currentNote;
+    return _currentNote;
 }
