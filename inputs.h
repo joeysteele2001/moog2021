@@ -15,6 +15,9 @@ bool slideTopIsPressed();
 /// For sanity, returns a value between 0 and 1.
 float readSlideBottom();
 
+/// Return whether the bottom sliding pot is being pressed.
+bool slideBottomIsPressed();
+
 /// Read the neck force-sensitive resistor with appropriate scaling.
 /// For sanity, returns a value between 0 and 1.
 float readFsrNeck();

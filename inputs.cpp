@@ -3,8 +3,12 @@
 
 constexpr int SLIDE_TOP_HIGH_VALUE = 550;
 constexpr int SLIDE_TOP_LOW_VALUE = 315;
-
 constexpr int SLIDE_TOP_PRESS_THRESHOLD = 100;
+
+constexpr int SLIDE_BOTTOM_HIGH_VALUE = 350;
+constexpr int SLIDE_BOTTOM_LOW_VALUE = 250;
+constexpr int SLIDE_BOTTOM_PRESS_THRESHOLD = 100;
+
 constexpr int SWITCH_THRESHOLD = 1000;
 
 // Map a float from between fromLow and fromHigh to between 0 and 1.
@@ -42,8 +46,24 @@ bool slideTopIsPressed() {
     return slideTopIsPressed(rawVal);
 }
 
-// TODO define readSlideBottom()
-float readSlideBottom();
+static bool slideBottomIsPressed(int rawVal) {
+    return rawVal > SLIDE_BOTTOM_PRESS_THRESHOLD;
+}
+
+float readSlideBottom() {
+    int rawVal = analogRead(PinDefs::PIN_SLIDE_BOTTOM);
+    if (!slideBottomIsPressed(rawVal)) {
+        return 0.0;
+    } else {
+        float mapped = floatMapLin(rawVal, SLIDE_BOTTOM_LOW_VALUE, SLIDE_BOTTOM_HIGH_VALUE);
+        return _constrain(mapped);
+    }
+}
+
+bool slideBottomIsPressed() {
+    int rawVal = analogRead(PinDefs::PIN_SLIDE_BOTTOM);
+    return slideBottomIsPressed(rawVal);
+}
 
 // TODO define readFsrNeck()
 float readFsrNeck();
