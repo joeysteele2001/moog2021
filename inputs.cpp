@@ -1,6 +1,8 @@
 #include "inputs.h"
 #include "pindefs.h"
 
+constexpr int SWITCH_THRESHOLD = 1000;
+
 // TODO define readSlideTop()
 float readSlideTop();
 
@@ -13,8 +15,10 @@ float readFsrNeck();
 // TODO define readFsrBody()
 float readFsrBody();
 
-// TODO define readSwitch()
-bool readSwitch();
+bool readSwitch() {
+    int rawVal = analogRead(PinDefs::PIN_SWITCH);
+    return rawVal > SWITCH_THRESHOLD;
+}
 
 // TODO define readDial()
 bool readDial();
