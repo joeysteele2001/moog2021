@@ -28,7 +28,6 @@ void Arpeggiator::stop() {
     _active = false;
 }
 
-
 void Arpeggiator::setForward() {
     _direction = 1;
 }
@@ -82,7 +81,7 @@ int Arpeggiator::_incNote() {
     _currentNote += _direction;
     _currentNote %= _notesLen;
 
-    if _currentNote < 0 {
+    if (_currentNote < 0) {
         _currentNote += _notesLen;
     }
 
