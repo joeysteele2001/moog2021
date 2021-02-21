@@ -29,11 +29,19 @@ void Arpeggiator::stop() {
 }
 
 void Arpeggiator::setForward() {
-    _direction = 1;
+    if (_direction != 1) {
+        _direction = 1;
+        _incNote();
+        _incNote();
+    }
 }
 
 void Arpeggiator::setReverse() {
-    _direction = -1;
+    if (_direction != -1) {
+        _direction = -1;
+        _incNote();
+        _incNote();
+    }
 }
 
 void Arpeggiator::stopAtEnd(bool shouldStop) {
