@@ -117,7 +117,7 @@ bool readSwitch() {
     return rawVal > SWITCH_THRESHOLD;
 }
 
-bool readDial() {
+float readDial() {
     int rawVal = analogRead(PinDefs::PIN_DIAL);
     float mapped = floatMapLin(rawVal, DIAL_LOW_VALUE, DIAL_HIGH_VALUE);
     return _constrain(mapped);
