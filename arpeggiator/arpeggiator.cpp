@@ -15,7 +15,7 @@ void Arpeggiator::setTempo(float bpm) {
 void Arpeggiator::setNotes(uint8_t notes[], int notesLen) {
     _notes = notes;
     _notesLen = notesLen;
-    _currentNote = 0;
+    // _currentNote = 0;
 }
 
 void Arpeggiator::start() {
