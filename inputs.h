@@ -39,4 +39,15 @@ bool readSwitch();
 /// For sanity, returns a value between 0 and 1.
 float readDial();
 
+struct SlideVals {
+    float top;
+    float bottom;
+
+    SlideVals(float top, float bottom): top(top), bottom(bottom) {}
+};
+
+/// Read both sliding pots simultaneously.
+/// Assumes both pots are simultaneously pressed!
+SlideVals readSlides();
+
 #endif // INPUTS_H
