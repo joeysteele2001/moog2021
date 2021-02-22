@@ -9,6 +9,11 @@ constexpr int SLIDE_BOTTOM_HIGH_VALUE = 335;
 constexpr int SLIDE_BOTTOM_LOW_VALUE = 265;
 constexpr int SLIDE_BOTTOM_PRESS_THRESHOLD = 100;
 
+constexpr int SLIDE_TOP_HIGH_SIMUL = 390;
+constexpr int SLIDE_TOP_LOW_SIMUL = 270;
+constexpr int SLIDE_BOTTOM_HIGH_SIMUL = 195;
+constexpr int SLIDE_BOTTOM_LOW_SIMUL = 150;
+
 constexpr int FSR_NECK_HIGH_VALUE = 1023;
 constexpr int FSR_NECK_PRESS_THRESHOLD = 1000;
 
@@ -121,4 +126,14 @@ float readDial() {
     int rawVal = analogRead(PinDefs::PIN_DIAL);
     float mapped = floatMapLin(rawVal, DIAL_LOW_VALUE, DIAL_HIGH_VALUE);
     return _constrain(mapped);
+}
+
+SlideVals readSlides() {
+    int rawTop = analogRead(PinDefs::PIN_SLIDE_TOP);
+    int rawBot = analogRead(PinDefs::PIN_SLIDE_BOTTOM);
+
+    float mappedTop = floatMapLin(rawTop, SLIDE_TOP_LOW_SIMUL, SLIDE_TOP_HIGH_SIMUL);
+    float mappedBot = floatMapLin(rawBot, SLIDE_BOTTOM_LOW_SIMUL, SLIDE_BOTTOM_HIGH_SIMUL);
+
+    return SlideVals(_constrain(mappedTop), _constrain(mappedBot));
 }
